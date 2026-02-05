@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FluxIA - Potencialize seus negócios com afiliados inteligentes e automação personalizada. Crescimento digital + IA." />
+  <meta name="theme-color" content="#0891b2" />
+  <title>FluxIA - Crescimento Digital + Automação Inteligente</title>
+  <style>
+    :root {
+      --color-primary: #06b6d4;
+      --color-primary-dark: #0891b2;
+      --color-secondary: #a78bfa;
+      --color-accent: #ec4899;
+      --color-success: #10b981;
+      --color-bg: #0a0e27;
+      --color-surface: #111827;
+      --color-surface-light: #1f2937;
+      --color-text: #f1f5f9;
+      --color-text-light: #cbd5e1;
+      --color-text-lighter: #94a3b8;
+      --color-border: #2d3748;
+      --color-dark: #020617;
+      --color-overlay: rgba(2, 6, 23, 0.9);
+      --neon-blue: #00d4ff;
+      --neon-purple: #b366ff;
+      --neon-pink: #ff0080;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a0a3e 25%, #0f0f2e 50%, #0a0e27 75%, #020617 100%);
+      background-attachment: fixed;
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(167, 139, 250, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    main, header, footer, section { position: relative; z-index: 1; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 1.875rem; }
+    h4 { font-size: 1.25rem; }
+
+    header {
+      background: rgba(17, 24, 39, 0.7);
+      box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--color-text);
+      transition: transform 0.3s;
+    }
+
+    .logo:hover { transform: scale(1.05); }
+
+    nav { display: flex; gap: 2.5rem; align-items: center; }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-text-light);
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    nav a:hover { color: var(--neon-blue); text-shadow: 0 0 10px rgba(6, 182, 212, 0.6); }
+
+    nav a:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+      transition: width 0.3s;
+    }
+
+    nav a:hover:after { width: 100%; }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      padding: 0.7rem 1.8rem;
+      border-radius: 8px;
+      transition: all 0.3s;
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.6), 0 0 60px rgba(163, 230, 53, 0.2);
+      border-color: rgba(6, 182, 212, 0.8);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(26, 10, 62, 0.6) 50%, rgba(6, 182, 212, 0.1) 100%);
+      color: #fff;
+      padding: 4rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(167, 139, 250, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% -10%, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 50%, var(--neon-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 40px rgba(6, 182, 212, 0.3);
+    }
+
+    .hero .subtitle {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      color: #cbd5e1;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      margin: 2rem auto;
+      border-radius: 16px;
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.25);
+      display: block;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stat-item {
+      background: rgba(6, 182, 212, 0.05);
+      padding: 1.25rem;
+      border-radius: 10px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      transition: all 0.3s;
+    }
+
+    .stat-item:hover {
+      background: rgba(6, 182, 212, 0.1);
+      border-color: rgba(6, 182, 212, 0.4);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label { font-size: 0.95rem; opacity: 0.85; }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.25rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      padding: 1rem 2.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      cursor: pointer;
+      transition: all 0.25s;
+      font-size: 1rem;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.5), 0 10px 20px rgba(0, 0, 0, 0.25);
+      border-color: rgba(6, 182, 212, 0.8);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      padding: 1rem 2.25rem;
+      border: 2px solid rgba(6, 182, 212, 0.5);
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--neon-blue);
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.35);
+    }
+
+    .services {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, rgba(10, 14, 39, 0.5) 0%, rgba(26, 10, 62, 0.3) 100%);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .section-header { text-align: center; margin-bottom: 4rem; }
+
+    .section-header .subtitle {
+      font-size: 1.15rem;
+      color: var(--color-text-light);
+      max-width: 680px;
+      margin: 1rem auto 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: rgba(17, 24, 39, 0.55);
+      border-radius: 14px;
+      padding: 2.5rem 2.2rem;
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(6, 182, 212, 0.15);
+      border-color: rgba(6, 182, 212, 0.5);
+      background: rgba(17, 24, 39, 0.82);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.35);
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .service-card h3 {
+      color: var(--neon-blue);
+      margin-bottom: 1rem;
+      font-size: 1.7rem;
+      text-shadow: 0 0 10px rgba(6, 182, 212, 0.45);
+    }
+
+    .service-card > p {
+      color: var(--color-text-light);
+      margin-bottom: 1.75rem;
+      line-height: 1.8;
+    }
+
+    .features-list { list-style: none; display: grid; gap: 0.75rem; }
+
+    .features-list li {
+      color: var(--color-text-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.35rem 0;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: var(--color-success);
+      font-weight: 900;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .ai-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, rgba(26, 10, 62, 0.4) 0%, rgba(10, 14, 39, 0.6) 100%);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .ai-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .ai-content p { color: var(--color-text-light); margin: 1rem 0; line-height: 1.85; }
+
+    .ai-image {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      box-shadow: 0 0 50px rgba(6, 182, 212, 0.25);
+      display: block;
+    }
+
+    .platforms {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, rgba(26, 10, 62, 0.4) 0%, rgba(10, 14, 39, 0.6) 100%);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .platforms h2 { text-align: center; margin-bottom: 3rem; }
+
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .platform-item {
+      background: linear-gradient(135deg, rgba(8, 145, 178, 0.08), rgba(124, 58, 237, 0.08));
+      border: 1px solid var(--color-border);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .platform-item:hover {
+      border-color: var(--color-primary);
+      background: linear-gradient(135deg, rgba(8, 145, 178, 0.15), rgba(124, 58, 237, 0.15));
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(8, 145, 178, 0.15);
+    }
+
+    .platform-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .platform-item strong { display: block; margin-bottom: 0.5rem; color: var(--color-text); font-size: 1.1rem; }
+    .platform-item small { color: var(--color-text-light); }
+
+    .automations {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, rgba(10, 14, 39, 0.5) 0%, rgba(26, 10, 62, 0.3) 100%);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .automations h2 { text-align: center; margin-bottom: 3rem; }
+
+    .automations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .automation-box {
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .automation-box:hover {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 30px rgba(236, 72, 153, 0.2);
+      transform: translateY(-5px);
+      background: rgba(236, 72, 153, 0.05);
+    }
+
+    .automation-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .automation-box h4 { color: var(--neon-blue); margin-bottom: 1rem; text-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
+    .automation-box p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.6; }
+
+    .benefits {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(26, 10, 62, 0.6) 100%);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .benefits h2 { text-align: center; margin-bottom: 3rem; }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .benefit-item { display: flex; gap: 1.5rem; }
+
+    .benefit-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.35);
+    }
+
+    .benefit-content p { color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; }
+
+    .pricing {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, rgba(26, 10, 62, 0.4) 0%, rgba(10, 14, 39, 0.6) 100%);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .pricing h2 { text-align: center; margin-bottom: 3rem; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .price-card {
+      background: rgba(17, 24, 39, 0.6);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--neon-blue);
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(6, 182, 212, 0.25);
+      background: rgba(6, 182, 212, 0.1);
+    }
+
+    .price-card:hover {
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.2);
+      background: rgba(17, 24, 39, 0.8);
+    }
+
+    .price-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 15px rgba(236, 72, 153, 0.35);
+    }
+
+    .price-name { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text); }
+
+    .price-value {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.25rem;
+    }
+
+    .price-description { color: var(--color-text-light); margin-bottom: 1.75rem; font-size: 0.95rem; }
+
+    .price-features { list-style: none; margin-bottom: 2rem; text-align: left; }
+
+    .price-features li {
+      padding: 0.6rem 0;
+      color: var(--color-text-light);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .price-features li::before { content: "✓"; color: var(--color-success); font-weight: 900; }
+    .price-features li:last-child { border-bottom: none; }
+
+    .price-btn {
+      width: 100%;
+      padding: 0.95rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .price-card.featured .price-btn {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      border: 1px solid rgba(6, 182, 212, 0.5);
+    }
+
+    .price-card.featured .price-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+      border-color: var(--neon-blue);
+    }
+
+    .price-card .price-btn {
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--color-text);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .price-card .price-btn:hover {
+      background: rgba(6, 182, 212, 0.2);
+      color: var(--neon-blue);
+      border-color: var(--neon-blue);
+    }
+
+    .faq {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, rgba(10, 14, 39, 0.5) 0%, rgba(26, 10, 62, 0.3) 100%);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .faq h2 { text-align: center; margin-bottom: 3rem; }
+
+    .faq-grid { max-width: 850px; margin: 0 auto; }
+
+    .faq-item {
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 10px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .faq-item:hover { border-color: rgba(6, 182, 212, 0.4); }
+
+    .faq-question {
+      padding: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+      background: rgba(17, 24, 39, 0.5);
+      transition: all 0.3s;
+      color: var(--color-text-light);
+      gap: 1rem;
+    }
+
+    .faq-item.active .faq-question { background: rgba(6, 182, 212, 0.1); color: var(--neon-blue); }
+
+    .faq-toggle {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      border-radius: 50%;
+      font-weight: 900;
+      transition: transform 0.3s;
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-toggle { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.4rem;
+    }
+
+    .faq-item.active .faq-answer { max-height: 360px; padding: 0 1.4rem 1.4rem; }
+
+    .faq-answer p { color: var(--color-text-light); line-height: 1.85; }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(26, 10, 62, 0.8) 0%, rgba(6, 182, 212, 0.15) 100%);
+      color: #fff;
+      padding: 5rem 2rem;
+      text-align: center;
+      margin-top: 3.5rem;
+      border-top: 1px solid rgba(6, 182, 212, 0.2);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .cta-section h2 {
+      font-size: 2.6rem;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 50%, var(--neon-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-section p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #cbd5e1;
+    }
+
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-white {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      padding: 1rem 2.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      cursor: pointer;
+      transition: all 0.25s;
+      font-size: 1rem;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
+      border-color: rgba(6, 182, 212, 0.8);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--neon-blue);
+      padding: 1rem 2.25rem;
+      border: 2px solid rgba(6, 182, 212, 0.5);
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .btn-outline:hover {
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--neon-blue);
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.35);
+    }
+
+    .legal-section {
+      padding: 5rem 2rem;
+      background: rgba(17, 24, 39, 0.35);
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .legal-section h2 { text-align: center; margin-bottom: 2rem; }
+
+    .legal-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .legal-card {
+      background: rgba(17, 24, 39, 0.55);
+      border: 1px solid rgba(6, 182, 212, 0.18);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: var(--color-text-light);
+    }
+
+    .legal-card h4 { margin-bottom: 0.75rem; color: var(--color-text); }
+
+    footer {
+      background: linear-gradient(135deg, rgba(2, 6, 23, 0.92) 0%, rgba(10, 14, 39, 0.75) 100%);
+      color: #cbd5e1;
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-section h4 { color: #fff; margin-bottom: 1.1rem; }
+    .footer-section ul { list-style: none; }
+    .footer-section ul li { margin-bottom: 0.75rem; }
+
+    .footer-section a { color: #cbd5e1; text-decoration: none; transition: color 0.3s; }
+    .footer-section a:hover { color: var(--color-primary); }
+
+    .contact-info { margin-top: 1rem; color: var(--color-text-light); }
+    .contact-info strong { color: var(--neon-blue); }
+
+    .social-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: rgba(6, 182, 212, 0.18);
+      border-radius: 50%;
+      color: var(--neon-blue);
+      text-decoration: none;
+      transition: all 0.25s;
+      font-weight: 900;
+      border: 1px solid rgba(6, 182, 212, 0.28);
+    }
+
+    .social-links a:hover {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+      border-color: var(--neon-blue);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #334155;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .header-container { flex-wrap: wrap; }
+
+      nav { display: none; gap: 1rem; }
+
+      nav.active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: var(--color-surface);
+        padding: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .mobile-menu-toggle { display: flex; }
+
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.5rem; }
+
+      .hero { padding: 3.25rem 1.25rem; }
+      .hero h1 { font-size: 2.3rem; }
+      .hero .subtitle { font-size: 1.08rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .hero-buttons { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; }
+
+      .platforms-grid { grid-template-columns: repeat(2, 1fr); }
+      .automations-grid { grid-template-columns: 1fr; }
+      .price-card.featured { transform: scale(1); }
+      .ai-container { grid-template-columns: 1fr; }
+
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .cta-buttons { flex-direction: column; }
+      .cta-buttons a { width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 1rem; }
+      .platforms-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .service-card { padding: 2rem 1.5rem; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.35); }
+      50% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.75); }
+    }
+
+    .fade-in { animation: fadeInUp 0.6s ease-out; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-container">
+        <a href="#" class="logo" aria-label="FluxIA">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#0891b2;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <circle cx="20" cy="20" r="19" fill="url(#grad1)" opacity="0.1" stroke="url(#grad1)" stroke-width="2" />
+            <path d="M12 20L18 26L28 14" stroke="url(#grad1)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          FluxIA
+        </a>
+
+        <nav id="nav-menu" aria-label="Menu principal">
+          <a href="#services">Serviços</a>
+          <a href="#ia-tecnologia">IA &amp; Tecnologia</a>
+          <a href="#platforms">Plataformas</a>
+          <a href="#pricing">Preços</a>
+          <a href="#faq">FAQ</a>
+          <button class="nav-cta" onclick="scrollToContact()">Contato</button>
+        </nav>
+
+        <button class="mobile-menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="topo">
+      <div class="container">
+        <div class="hero-content fade-in">
+          <h1>Crescimento Digital + Automação Inteligente</h1>
+          <p class="subtitle">Maximize suas vendas com afiliados inteligentes e automatize seus processos com IA personalizada</p>
+
+          <!-- IMPORTANTE: este arquivo precisa estar na mesma pasta do index.html -->
+          <img src="image.jpg" alt="Inteligência artificial aplicada a negócios" class="hero-image" />
+
+          <div class="hero-stats" aria-label="Estatísticas">
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Empresas ativas</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">R$ 10M+</div>
+              <div class="stat-label">Em comissões</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Automação rodando</div>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#services" class="btn-primary">Explorar soluções</a>
+            <a href="https://wa.me/5553999252664?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20FluxIA" class="btn-secondary" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Nossas soluções</h2>
+          <p class="subtitle">Duas frentes poderosas para potencializar seu negócio digital</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🛍️</div>
+            <h3>FluxIA Afiliados</h3>
+            <p>Maximize suas comissões com acesso às principais plataformas de afiliados e cupons exclusivos personalizados para seus clientes.</p>
+            <ul class="features-list">
+              <li>Integração com Mercado Livre</li>
+              <li>Amazon Associates</li>
+              <li>Shopee Afiliados</li>
+              <li>AliExpress Partner</li>
+              <li>Cupons personalizados</li>
+              <li>Distribuição via WhatsApp e Telegram</li>
+              <li>Dashboard de performance</li>
+            </ul>
+            <div style="margin-top: 1.5rem;">
+              <a class="btn-primary" href="mailto:fluxia.afiliados@gmail.com">Email Afiliados</a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>FluxIA Automação</h3>
+            <p>Automatize seus processos com n8n e potencialize com fluxos personalizados e agentes de IA inteligentes para seu negócio.</p>
+            <ul class="features-list">
+              <li>Automação de agendas</li>
+              <li>Fluxos para clínicas e consultórios</li>
+              <li>Barbearias e salões</li>
+              <li>E-commerce e afiliados</li>
+              <li>Identificação automática de promoções</li>
+              <li>Postagens automáticas (WhatsApp/Telegram)</li>
+              <li>Agentes de IA personalizados</li>
+            </ul>
+            <div style="margin-top: 1.5rem;">
+              <a class="btn-primary" href="mailto:contato.fluxia@outlook.com">Email Automação</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section" id="ia-tecnologia">
+      <div class="container">
+        <div class="ai-container">
+          <div class="ai-content">
+            <h2>Potência de IA em suas mãos</h2>
+            <p>Nossa tecnologia integra inteligência artificial avançada para automatizar e potencializar seu negócio: atendimento, captação, segmentação, conteúdo e integrações.</p>
+            <p>Fluxos com IA podem operar 24/7 com respostas rápidas e consistência, reduzindo trabalho manual e melhorando a experiência do seu cliente.</p>
+            <div style="margin-top: 1.25rem; display:flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a class="btn-primary" href="https://wa.me/5553999252664?text=Ol%C3%A1!%20Quero%20uma%20demonstra%C3%A7%C3%A3o%20da%20FluxIA%20Autom%C3%A7%C3%A3o" target="_blank" rel="noopener">Pedir demonstração</a>
+              <a class="btn-secondary" href="#pricing">Ver planos</a>
+            </div>
+          </div>
+          <div>
+            <!-- IMPORTANTE: este arquivo precisa estar na mesma pasta do index.html -->
+            <img src="como-implementar-inteligencia-artificial.jpg" alt="IA aplicada a automação e crescimento" class="ai-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="platforms" id="platforms">
+      <div class="container">
+        <h2>Plataformas suportadas</h2>
+        <div class="platforms-grid">
+          <div class="platform-item"><div class="platform-icon">🏪</div><strong>Mercado Livre</strong><small>Maior plataforma do Brasil</small></div>
+          <div class="platform-item"><div class="platform-icon">📦</div><strong>Amazon</strong><small>E-commerce global</small></div>
+          <div class="platform-item"><div class="platform-icon">🛒</div><strong>Shopee</strong><small>Marketplace dinâmico</small></div>
+          <div class="platform-item"><div class="platform-icon">🌍</div><strong>AliExpress</strong><small>Produtos internacionais</small></div>
+          <div class="platform-item"><div class="platform-icon">💬</div><strong>WhatsApp</strong><small>Comunicação direta</small></div>
+          <div class="platform-item"><div class="platform-icon">📱</div><strong>Telegram</strong><small>Grupos personalizados</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="automations" id="automations">
+      <div class="container">
+        <h2>Tipos de automação</h2>
+        <div class="automations-grid">
+          <div class="automation-box"><div class="automation-icon">📅</div><h4>Agendamento inteligente</h4><p>Automatize lembretes, confirmações e remarcações para clínicas, consultórios, barbearias e salões.</p></div>
+          <div class="automation-box"><div class="automation-icon">🎯</div><h4>Identificação de promoções</h4><p>Identifique ofertas nas plataformas e dispare para seus grupos em tempo real.</p></div>
+          <div class="automation-box"><div class="automation-icon">🤖</div><h4>Agentes IA</h4><p>Atendimento 24/7, geração de leads e respostas inteligentes com aprendizado contínuo.</p></div>
+          <div class="automation-box"><div class="automation-icon">🔗</div><h4>Integração de sistemas</h4><p>Conecte sistemas, bases e ferramentas com n8n de forma segura e escalável.</p></div>
+          <div class="automation-box"><div class="automation-icon">📢</div><h4>Broadcast em massa</h4><p>Envio em WhatsApp/Telegram com segmentação, organização e consistência.</p></div>
+          <div class="automation-box"><div class="automation-icon">⚡</div><h4>Fluxos customizados</h4><p>Soluções sob medida para seu processo, com suporte e evolução contínua.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+      <div class="container">
+        <h2>Por que escolher FluxIA?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-item"><div class="benefit-icon">✨</div><div class="benefit-content"><h4>Crescimento consistente</h4><p>Aumente suas vendas com estratégia + automação 24/7.</p></div></div>
+          <div class="benefit-item"><div class="benefit-icon">🎯</div><div class="benefit-content"><h4>Suporte especializado</h4><p>Ajuda para otimizar fluxos e melhorar resultados.</p></div></div>
+          <div class="benefit-item"><div class="benefit-icon">⚡</div><div class="benefit-content"><h4>Implementação rápida</h4><p>Do conceito à produção em dias.</p></div></div>
+          <div class="benefit-item"><div class="benefit-icon">🔐</div><div class="benefit-content"><h4>Segurança</h4><p>Boas práticas e foco em privacidade (LGPD).</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <h2>Planos flexíveis para todo negócio</h2>
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div class="price-badge">Starter</div>
+            <div class="price-name">Iniciante</div>
+            <div class="price-value">A partir de R$ 99,90<span style="font-size: 1rem; color: var(--color-text-light);">/mês</span></div>
+            <p class="price-description">Perfeito para quem está começando</p>
+            <ul class="price-features">
+              <li>1 integração de plataforma</li>
+              <li>Até 1.000 contatos</li>
+              <li>Suporte por email</li>
+              <li>Dashboard básico</li>
+            </ul>
+            <button class="price-btn" onclick="contact()">Começar</button>
+          </div>
+
+          <div class="price-card featured">
+            <div class="price-badge">Popular</div>
+            <div class="price-name">Profissional</div>
+            <div class="price-value">A partir de R$ 199,90<span style="font-size: 1rem; color: var(--color-text-light);">/mês</span></div>
+            <p class="price-description">Mais vendido pelos clientes</p>
+            <ul class="price-features">
+              <li>4 integrações</li>
+              <li>Até 50.000 contatos</li>
+              <li>Suporte prioritário</li>
+              <li>Automações ilimitadas</li>
+              <li>Agentes IA básicos</li>
+            </ul>
+            <button class="price-btn" onclick="contact()">Começar agora</button>
+          </div>
+
+          <div class="price-card">
+            <div class="price-badge">Enterprise</div>
+            <div class="price-name">Enterprise</div>
+            <div class="price-value">Customizado</div>
+            <p class="price-description">Para grandes operações</p>
+            <ul class="price-features">
+              <li>Integrações ilimitadas</li>
+              <li>Contatos ilimitados</li>
+              <li>Suporte 24/7 dedicado</li>
+              <li>Agentes IA avançados</li>
+              <li>SLA (quando aplicável)</li>
+            </ul>
+            <button class="price-btn" onclick="contact()">Falar com o time</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <h2>Perguntas frequentes</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Como funciona a integração com as plataformas de afiliados?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer"><p>Conectamos nas plataformas e configuramos o fluxo para distribuição e acompanhamento, conforme as possibilidades de cada canal e estratégia.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Quanto tempo leva para implementar a automação?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer"><p>Fluxos simples podem ser implementados em poucos dias. Projetos mais complexos variam conforme integrações e regras.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Preciso de conhecimento técnico para usar?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer"><p>Não. As rotinas ficam configuradas e você usa por WhatsApp/Telegram e/ou painéis simples, com orientação.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Meus dados estão seguros?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer"><p>Boas práticas de segurança e atenção à LGPD. O detalhe depende do tipo de integração e do ambiente de hospedagem.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contato">
+      <div class="container">
+        <h2>Pronto para transformar seu negócio?</h2>
+        <p>Fale direto no WhatsApp. Para emails, use os contatos específicos de Afiliados e Automação.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/5553999252664?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20da%20FluxIA" class="btn-white" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:fluxia.afiliados@gmail.com" class="btn-outline">Email Afiliados</a>
+          <a href="mailto:contato.fluxia@outlook.com" class="btn-outline">Email Automação</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal-section" id="legal">
+      <div class="container">
+        <h2>Legal e privacidade</h2>
+        <div class="legal-grid">
+          <div class="legal-card" id="privacy">
+            <h4>Privacidade</h4>
+            <p>O site não coleta dados automaticamente. Contatos acontecem via WhatsApp/Email. Ajuste esta seção quando houver formulários.</p>
+          </div>
+          <div class="legal-card" id="terms">
+            <h4>Termos de serviço</h4>
+            <p>Serviços e prazos são alinhados por proposta. Recomenda-se formalizar escopo e condições para cada cliente.</p>
+          </div>
+          <div class="legal-card" id="lgpd">
+            <h4>LGPD</h4>
+            <p>Tratamento de dados seguindo boas práticas. Se houver bases, integrações e automações, definir finalidades e consentimentos.</p>
+          </div>
+          <div class="legal-card" id="cookies">
+            <h4>Cookies</h4>
+            <p>Este site estático não define cookies por padrão. Se adicionar Analytics ou Pixel, atualize esta seção.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>FluxIA</h4>
+          <p>Transformando negócios com automação inteligente e estratégias de crescimento digital.</p>
+          <div class="contact-info">
+            <p><strong>📍 Localização:</strong> Bagé, RS</p>
+            <p><strong>📞 WhatsApp:</strong> (53) 99925-2664</p>
+          </div>
+          <div class="social-links">
+            <a href="https://wa.me/5553999252664" title="WhatsApp" target="_blank" rel="noopener">W</a>
+            <a href="https://instagram.com/fluxia" title="Instagram" target="_blank" rel="noopener">IG</a>
+            <a href="#contato" title="Contato">✉</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>FluxIA Afiliados</h4>
+          <ul>
+            <li><a href="#services">Soluções</a></li>
+            <li><a href="mailto:fluxia.afiliados@gmail.com">fluxia.afiliados@gmail.com</a></li>
+            <li><a href="https://wa.me/5553999252664" target="_blank" rel="noopener">WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>FluxIA Automação</h4>
+          <ul>
+            <li><a href="#ia-tecnologia">IA &amp; Tecnologia</a></li>
+            <li><a href="mailto:contato.fluxia@outlook.com">contato.fluxia@outlook.com</a></li>
+            <li><a href="https://wa.me/5553999252664" target="_blank" rel="noopener">WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#privacy">Privacidade</a></li>
+            <li><a href="#terms">Termos de serviço</a></li>
+            <li><a href="#lgpd">LGPD</a></li>
+            <li><a href="#cookies">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FluxIA. Todos os direitos reservados.</p>
+        <p>FluxIA | Bagé, RS - Brasil</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      const toggle = document.getElementById("menu-toggle");
+      nav.classList.toggle("active");
+      toggle.classList.toggle("active");
+    }
+
+    document.querySelectorAll("#nav-menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.getElementById("nav-menu").classList.remove("active");
+        document.getElementById("menu-toggle").classList.remove("active");
+      });
+    });
+
+    function toggleFaq(element) {
+      element.closest(".faq-item").classList.toggle("active");
+    }
+
+    function scrollToContact() {
+      document.getElementById("contato").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function contact() {
+      window.location.href = "https://wa.me/5553999252664?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20FluxIA";
+    }
+
+    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".service-card, .automation-box, .platform-item").forEach((el) => {
+      observer.observe(el);
+    });
+
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      header.style.boxShadow = window.scrollY > 50
+        ? "0 10px 30px rgba(0, 0, 0, 0.1)"
+        : "0 1px 3px rgba(0, 0, 0, 0.05)";
+    });
+  </script>
+</body>
+</html>
